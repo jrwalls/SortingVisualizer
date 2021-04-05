@@ -1,0 +1,56 @@
+.App {
+  padding-top: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+.array-container {
+  position: relative;
+  height:300px;
+  padding-top: 40px;
+  border: 4px solid black;
+  background-color: #212121;
+}
+
+.controls-container {
+  background-color: #c2c2c2;
+  height: 250px;
+  border: 4px solid black;
+}
+
+.alert-container {
+  background-color: #c2c2c2;
+  border: 4px solid black;
+}
+
+.align-left {
+  position: absolute;
+}
+
+.array-bar {
+  width: 2px;
+  background-color: red;
+  display: inline-block;
+  margin: 0 1px;
+}
+
+.imgfit {
+  width: 100%;
+  height: 82%;
+}
+
+.info-icon {
+  position: absolute;
+  left:0;
+  right:1065px;
+  top:0;
+  color: white;
+}
+
+.info-icon:hover {
+  color: #fcad03;
+}
+
+.complexity-title {
+  padding-top: 5px;
+}
