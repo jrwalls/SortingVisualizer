@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Button } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 class AlertHeading extends React.Component {
 	constructor(props) {
@@ -18,9 +18,8 @@ class AlertHeading extends React.Component {
 		    return (
 		      <Alert show={this.state.show} variant="success" onClose={() => this.onCloseHandler()} dismissible>
 		        <Alert.Heading>Sorting Algorithm Visualizer</Alert.Heading>
-		        <h8>Select an algorithm with the dropdown button, adjust the size and speed as you wish and click on the sort button.</h8>
-		        <p>To learn more about each algorithm, click the information(🛈) icon.</p>
-		        <a class="github-button" href="https://github.com/jrwalls" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Follow @jrwalls on GitHub">GitHub: @jrwalls</a>
+		        Select an algorithm with the dropdown button, adjust the size and speed as you wish and click on the sort button.
+		        To learn more about each algorithm, click the information(🛈) icon. Made by <a style={{ color: "red" }} href="https://github.com/jrwalls">GitHub: @jrwalls</a>
 		      </Alert>
 		    );
 		  }

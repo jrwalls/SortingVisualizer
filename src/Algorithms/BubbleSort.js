@@ -16,3 +16,4 @@ export function bubbleSort(array) {
     }
     return animations;
 }
+

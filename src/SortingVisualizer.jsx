@@ -78,6 +78,7 @@ class SortingVisualizer extends React.Component {
         }
     }
 
+    //call when array needs to be generated/regenerated
     resetArray = (e) => {
         const array = [];
         //prevents array size from turning to 0 if called from button click in render
@@ -106,6 +107,40 @@ class SortingVisualizer extends React.Component {
         this.setState({ isSorted: false });
     }
 
+    //call before a sorting algorithm begins to update the status and disable the control panel buttons
+    firstSort() {
+        this.setState({ status: this.ALGORITHMTYPE + " Running" })
+        this.toggleUserInput();
+    }
+
+    //call after sorting algorithm is sorted to turn array bars green and re-enable control panel buttons
+    lastSort() {
+        const bars = document.getElementsByClassName("array-bar");
+        var arrayLength = bars.length;
+        for (let i = 0; i < arrayLength; i++) {
+            setTimeout(() => {
+                var barStyle = bars[i].style;
+                barStyle.backgroundColor = "limegreen";
+            }, i * this.state.animationSpeed);
+        }
+            this.toggleUserInput();
+            this.setState({ sortButtonName: "Sort!" });
+            this.setState({ status: this.ALGORITHMTYPE + " done! Please regenerate the array."});
+            this.setState({ isSorted: true });
+    }
+
+    //toggles control panel component buttons and sets the sort button to a loading animation
+    toggleUserInput() {
+        this.setState({ isDisabled: !this.state.isDisabled });
+        this.setState({ sortButtonName: <Loader type="ThreeDots" color="white" height={10} width={40} /> });
+    }
+
+    //changes the speed of the sorting animation
+    changeSpeed = (e) => {
+        this.setState({ animationSpeed: e });
+    }
+
+    //**Sorting Algorithm animations**
     bubbleSortAnimation() {
         //check to see if array has been sorted, if so, alert the user to regenerate the array
         if (this.state.isSorted) {
@@ -119,17 +154,13 @@ class SortingVisualizer extends React.Component {
                     var [oldPosition, newPosition] = animations[i];
                     var oldBarStyle = bars[oldPosition].style;
                     var newBarStyle = bars[newPosition].style;
-
                     var temp = this.state.array[oldPosition];
                     this.state.array[oldPosition] = this.state.array[newPosition];
                     this.state.array[newPosition] = temp;
-
                     oldBarStyle.height = `${this.state.array[oldPosition]}px`;
                     newBarStyle.height = `${this.state.array[newPosition]}px`;
-
                     oldBarStyle.backgroundColor = "red";
-                    newBarStyle.backgroundColor = "grey";
-
+                    newBarStyle.backgroundColor = "white";
                     var currentPosition = oldPosition;
                     for (let j = 0; j < currentPosition; j++) {
                         var jbar = bars[j].style;
@@ -152,9 +183,9 @@ class SortingVisualizer extends React.Component {
             const [animations] = selectionSort(this.state.array);
             const arrayBars = document.getElementsByClassName('array-bar');
             for (let i = 0; i < animations.length; i++) {
-                const isColorChange = (animations[i][0] === "comparision1") || (animations[i][0] === "comparision2");
+                const isColorChange = (animations[i][0] === "firstComparison") || (animations[i][0] === "secondComparison");
                 if(isColorChange === true) {
-                    const color = (animations[i][0] === "comparision1") ? "white" : "red";
+                    const color = (animations[i][0] === "firstComparison") ? "white" : "red";
                     const [temp, barOneIndex, barTwoIndex] = animations[i];
                     const barOneStyle = arrayBars[barOneIndex].style;
                     const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -212,39 +243,6 @@ class SortingVisualizer extends React.Component {
             }
         }
 
-    firstSort() {
-        //call before a sorting algorithm begins to update the status and disable the control panel buttons
-        this.setState({ status: this.ALGORITHMTYPE + " Running..." })
-        this.toggleUserInput();
-    }
-
-    lastSort() {
-        //call after sorting algorithm is sorted to turn array bars green and re-enable control panel buttons
-        const bars = document.getElementsByClassName("array-bar");
-        var arrayLength = bars.length;
-        for (let i = 0; i < arrayLength; i++) {
-            setTimeout(() => {
-                var barStyle = bars[i].style;
-                barStyle.backgroundColor = "limegreen";
-            }, i * this.state.animationSpeed);
-        }
-            this.toggleUserInput();
-            this.setState({ sortButtonName: "Sort!" });
-            this.setState({ status: this.ALGORITHMTYPE + " done! Please regenerate the array."});
-            this.setState({ isSorted: true });
-    }
-
-    //toggles control panel component buttons and sets the sort button to a loading animation
-    toggleUserInput() {
-        this.setState({ isDisabled: !this.state.isDisabled });
-        this.setState({ sortButtonName: <Loader type="ThreeDots" color="white" height={10} width={40} /> });
-    }
-
-    //changes the speed of the sorting animation
-    changeSpeed = (e) => {
-        this.setState({ animationSpeed: e });
-    }
-
     render() {
         return (
             <Container>
@@ -260,7 +258,8 @@ class SortingVisualizer extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                        <StatusBar status={this.state.status} />
+                        <StatusBar 
+                            status={this.state.status} />
                     </Col>
                 </Row>
                 <Row noGutters={true}>
