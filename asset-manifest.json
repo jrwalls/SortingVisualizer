@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/SortingVisualizer/static/css/main.919cbfb1.chunk.css",
+    "main.js": "/SortingVisualizer/static/js/main.f0786b79.chunk.js",
+    "main.js.map": "/SortingVisualizer/static/js/main.f0786b79.chunk.js.map",
+    "runtime-main.js": "/SortingVisualizer/static/js/runtime-main.2a4d44b6.js",
+    "runtime-main.js.map": "/SortingVisualizer/static/js/runtime-main.2a4d44b6.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/SortingVisualizer/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.9a5fa9b9.chunk.js": "/SortingVisualizer/static/js/2.9a5fa9b9.chunk.js",
+    "static/js/2.9a5fa9b9.chunk.js.map": "/SortingVisualizer/static/js/2.9a5fa9b9.chunk.js.map",
+    "index.html": "/SortingVisualizer/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/SortingVisualizer/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.919cbfb1.chunk.css.map": "/SortingVisualizer/static/css/main.919cbfb1.chunk.css.map",
+    "static/js/2.9a5fa9b9.chunk.js.LICENSE.txt": "/SortingVisualizer/static/js/2.9a5fa9b9.chunk.js.LICENSE.txt",
+    "static/media/bigograph.bb95a658.png": "/SortingVisualizer/static/media/bigograph.bb95a658.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2a4d44b6.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.9a5fa9b9.chunk.js",
+    "static/css/main.919cbfb1.chunk.css",
+    "static/js/main.f0786b79.chunk.js"
+  ]
+}
