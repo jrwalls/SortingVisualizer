@@ -33,7 +33,7 @@ class InfoIcon extends React.Component {
             <Popover.Title as="h3">{algorithmType} Information</Popover.Title>
             <Popover.Content>
             <p>{algorithmInfo}</p>
-            <b>Read more:</b> <a href={algorithmWikiURL} target="_blank">Wiki/{algorithmType}</a> 
+            <b>Read more:</b> <a href={algorithmWikiURL} target="_blank" rel="noreferrer">Wiki/{algorithmType}</a> 
             </Popover.Content>
             </Popover>
         );

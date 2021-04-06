@@ -10,6 +10,7 @@ import { selectionSort } from './Algorithms/SelectionSort.js';
 import { mergeSort } from './Algorithms/MergeSort.js';
 
 //importing components
+import AlertHeading from './Components/AlertHeading.jsx';
 import ComplexityGraph from './Components/ComplexityGraph.jsx';
 import StatusBar from './Components/StatusBar.jsx';
 import ArrayBars from './Components/ArrayBars.jsx';
@@ -32,11 +33,13 @@ class SortingVisualizer extends React.Component {
         };
     }
 
+    //generate and display array after component mounts
     componentDidMount() {
-        //generate and display array after component mounts
         this.resetArray();
     }
 
+    //changes the algorithm type. 
+    //algorithm type used to decide which sorting animation to display in the startsort() method
     changeAlgorithmType = (e) => {
         this.ALGORITHMTYPE = e;
         if (this.ALGORITHMTYPE === "Bubble Sort") {
@@ -55,6 +58,7 @@ class SortingVisualizer extends React.Component {
         }
     }
 
+    //starts sorting animation according to which algorithm has been selected
     startSort = () => {
         if (this.ALGORITHMTYPE === "Bubble Sort") {
             this.bubbleSortAnimation();
@@ -103,6 +107,7 @@ class SortingVisualizer extends React.Component {
     }
 
     bubbleSortAnimation() {
+        //check to see if array has been sorted, if so, alert the user to regenerate the array
         if (this.state.isSorted) {
             alert("Array has already been sorted. Please generate a new array.");
         } else {
@@ -139,11 +144,12 @@ class SortingVisualizer extends React.Component {
     }
 
     selectionSortAnimation() {
+        //check to see if array has been sorted, if so, alert the user to regenerate the array
         if (this.state.isSorted) {
             alert("Array has already been sorted. Please generate a new array.");
         } else {
             this.firstSort();
-            const [animations, sortArray] = selectionSort(this.state.array);
+            const [animations] = selectionSort(this.state.array);
             const arrayBars = document.getElementsByClassName('array-bar');
             for (let i = 0; i < animations.length; i++) {
                 const isColorChange = (animations[i][0] === "comparision1") || (animations[i][0] === "comparision2");
@@ -172,6 +178,7 @@ class SortingVisualizer extends React.Component {
     }
 
     mergeSortAnimation() {
+    //check to see if array has been sorted, if so, alert the user to regenerate the array
     if (this.state.isSorted) {
             alert("Array has already been sorted. Please generate a new array.");
         } else {
@@ -241,11 +248,13 @@ class SortingVisualizer extends React.Component {
     render() {
         return (
             <Container>
+                <AlertHeading />
                 <Row>
                     <Col>
                         <ArrayBars 
                             array={this.state.array}
                             ALGORITHMTYPE={this.ALGORITHMTYPE}
+                            size={this.state.size}
                         />
                     </Col>
                 </Row>

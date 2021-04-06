@@ -39,18 +39,73 @@
   height: 82%;
 }
 
+.complexity-title {
+  padding-top: 5px;
+}
+
+/*Change slider gradients if control button panels are enbaled or disabled*/
+.slider-enabled {
+  width: 175px;
+  border: 2px solid black;
+  -webkit-appearance: none;
+  height: 15px;
+  background: rgb(0,255,9);
+  background: linear-gradient(90deg, rgba(0,255,9,1) 0%, rgba(255,138,0,1) 80%, rgba(255,0,0,1) 100%);
+  outline: none;
+}
+
+.slider-disabled {
+  width: 175px;
+  border: 2px solid black;
+  -webkit-appearance: none;
+  height: 15px;
+  background: rgb(148,148,148);
+  background: linear-gradient(90deg, rgba(148,148,148,1) 0%, rgba(0,0,0,1) 85%);
+  outline: none;
+}
+
+.slider-enabled::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: black;
+  cursor: pointer;
+}
+
+.slider-disabled::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: black;
+  cursor: pointer;
+}
+/**/
+
+/*To reverse direction of html range slider, used for speed slider.*/
+.reverse-slider {
+  direction: rtl;
+}
+
 .info-icon {
+  padding-left: 5px;
   position: absolute;
   left:0;
-  right:1065px;
+  right:1;
   top:0;
   color: white;
 }
 
 .info-icon:hover {
-  color: #fcad03;
+  color: limegreen;
 }
 
-.complexity-title {
-  padding-top: 5px;
+.array-counter {
+  padding-right: 10px;
+  position: absolute;
+  right:0;
+  left:1;
+  bottom:0;
+  color: white;
 }
