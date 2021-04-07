@@ -8,6 +8,7 @@ class ArrayBars extends React.Component {
             <div className="array-container">
             <InfoIcon ALGORITHMTYPE={this.props.ALGORITHMTYPE} />
             <ArrayCounter size={this.props.size} />
+            <div className="arraybar-container">
                 {this.props.array.map((value, idx) => (
                     <div
                         className="array-bar"
@@ -15,6 +16,7 @@ class ArrayBars extends React.Component {
                         style={{height: `${value}px`}}>
                     </div>
                 ))}
+            </div>
             </div>
         );
     }
